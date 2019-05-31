@@ -11,56 +11,36 @@ function buildMetadata(sample) {
   // @TODO: Complete the following function that builds the metadata panel
 
   // Use `d3.json` to fetch the metadata for a sample
-  // Use d3 to select the panel with id of `#sample-metadata`
+    // Use d3 to select the panel with id of `#sample-metadata`
 
-  // Use `.html("") to clear any existing metadata
+    // Use `.html("") to clear any existing metadata
 
-  // Use `Object.entries` to add each key and value pair to the panel
-  // Hint: Inside the loop, you will need to use d3 to append new
-  // tags for each key-value in the metadata.
+    // Use `Object.entries` to add each key and value pair to the panel
+    // Hint: Inside the loop, you will need to use d3 to append new
+    // tags for each key-value in the metadata.
 
-  // BONUS: Build the Gauge Chart
-  // buildGauge(data.WFREQ);
+    // BONUS: Build the Gauge Chart
+    // buildGauge(data.WFREQ);
 }
 
 function buildCharts(sample) {
   d3.json(`/samples/${sample}`).then((data) => {
     //console.log(data);
-    let otu_ids = data.otu_ids; //x
-    let sample_values = data.sample_values // y
+   let otu_ids = data.otu_ids; //x
+   let sample_values = data.sample_values // y
     let otu_labels = data.otu_labels //
     console.log(otu_ids)
     // Build the charts
-
-    var bubbleChartData = {
-      mode: 'markers',
-      x: otu_ids,
-      y: sample_values,
-      text: otu_labels,
-      marker: { color: otu_ids, colorscale: 'Rainbow', size: sample_values }
-    };
-
-    var bb1Data = [bubbleChartData];
-
-    var layout = {
-      showlegend: false,
-      height: 600,
-      width: 1200
-    };
-
-    Plotly.newPlot('bubble', bb1Data, layout);
-
   });
-
 
 
   // @TODO: Use `d3.json` to fetch the sample data for the plots
 
-  // @TODO: Build a Bubble Chart using the sample data
+    // @TODO: Build a Bubble Chart using the sample data
 
-  // @TODO: Build a Pie Chart
-  // HINT: You will need to use slice() to grab the top 10 sample_values,
-  // otu_ids, and labels (10 each).
+    // @TODO: Build a Pie Chart
+    // HINT: You will need to use slice() to grab the top 10 sample_values,
+    // otu_ids, and labels (10 each).
 };
 
 function init() {
