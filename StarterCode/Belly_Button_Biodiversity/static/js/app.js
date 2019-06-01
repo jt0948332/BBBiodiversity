@@ -29,7 +29,14 @@ function buildCharts(sample) {
     let otu_ids = data.otu_ids; //x
     let sample_values = data.sample_values // y
     let otu_labels = data.otu_labels //
-    console.log(otu_ids)
+    // Get the slice data at the same time using one call
+    let tenOtus = data.otu_ids.slice(0, 10);
+    let tenLabels = data.otu_labels.slice(0, 10);
+    let tenSample = data.sample_values.slice(0, 10);
+    console.log(tenOtus)
+    console.log(tenLabels)
+    console.log(tenOtus)
+
     // Build the charts
 
     var bubbleChartData = {
@@ -40,16 +47,28 @@ function buildCharts(sample) {
       marker: { color: otu_ids, colorscale: 'Rainbow', size: sample_values }
     };
 
-    var bb1Data = [bubbleChartData];
+    var bubbleData = [bubbleChartData];
 
     var layout = {
+      title: 'Bacteria Type and Counts',
       showlegend: false,
-      height: 600,
+      height: 800,
       width: 1200
     };
 
-    Plotly.newPlot('bubble', bb1Data, layout);
+    Plotly.newPlot('bubble', bubbleData, layout);
 
+    //Pie Chart
+    let Piedata = [{
+      "labels": tenOtus, hole: .6,
+      "values": tenSample,
+      "hovertext": tenLabels,
+      "type": "pie"
+    }];
+    console.log(data);
+    Plotly.newPlot('pie', Piedata);
+
+    //dont remove this bracket below
   });
 
 
